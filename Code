@@ -1,0 +1,40 @@
+SubmitHashRiddle(bytes32 _riddle)
+//This function adds a riddle to the database. The value that is passed along with the transaction will be the bounty for submitting the solution of the riddle. The sender of this transaction is also added as the riddle owner
+
+  //setup database to accept input
+  //check for valid input (sha256 hash)
+  //add the hash to the database at the first spot where the bounty is zero
+  //add the bounty to the database
+  //set riddle owner = message sender
+  //add riddle owner to database
+
+
+GetCurrentRiddles()
+//This function displays all current riddles that are associated with a bounty
+  
+  //return data entries that are associated with a bounty greater than zero
+  
+
+SubmitSolution(bytes32 _solution)
+//This function accepts a possible solution and calculates the sha256 hash of it. It then compares the hash with all hashes in the database. If a match is detected it sends the clear text solution to the riddle owner and the bounty to the current message sender. It also resets the bounty for this riddle to zero. The payableBounty variable is introduced to prevent the contract from beeing emptied by a contract that creates a loop when recieving the bounty. 
+
+  //setup payableBounty variable
+  //calculate the sha256 hash of the input 
+  //check if the hash matches with the hash of a stored riddle
+  //if a matching riddle is found 
+    //set the payableBounty variable to equal the bounty for the solved riddle
+    //set the bounty of the solved riddle to zero 
+    //send the input to the riddle owner in clear text
+    //send payableBounty to the message sender
+    //reset payableBounty to zero
+    
+RetractRiddle(bytes32 _riddle)
+//Allows the riddle owner to retract his riddle and regain the funds. 
+
+  //setup payableBounty variable
+  //check if message sender equals riddle owner
+  //check if _riddle matches with a riddle in the database
+  //if a matching riddle is found 
+    //set the payableBounty variable to equal the bounty for the solved riddle
+    //set the bounty of the solved riddle to zero 
+    //send payableBounty to the message sender
